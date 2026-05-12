@@ -79,15 +79,68 @@
   }
   .nav-cta:hover { background: var(--accent-hover); }
 
-  /* ──────────────────────────────────────── HERO */
+  /* ──────────────────────────────────────── HERO — Photo + caption card */
   .hero {
-    min-height: calc(100vh - 0px);
-    padding: 130px 6% 90px;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 80px;
-    align-items: center;
+    padding: 0 0 80px;
     position: relative;
+  }
+
+  .hero-photo-band {
+    width: 100%;
+    height: 62vh;
+    min-height: 460px;
+    max-height: 720px;
+    margin-top: 72px;        /* clear of fixed nav */
+    padding: 0 6%;
+  }
+  .hero-photo-frame {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 24px 60px -28px rgba(26,23,20,0.45);
+  }
+  .hero-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+    display: block;
+  }
+  .photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--surface-warm) 0%, var(--bg) 100%);
+    color: var(--ink-faint);
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    gap: 16px;
+  }
+  .photo-placeholder svg { opacity: 0.4; }
+
+  .hero-card-wrap {
+    padding: 0 6%;
+    margin-top: -120px;       /* pull card up over photo */
+    position: relative;
+    z-index: 2;
+  }
+  .hero-card {
+    max-width: 780px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: 14px;
+    padding: 52px 56px 48px;
+    box-shadow:
+      0 1px 0 rgba(0,0,0,0.04),
+      0 30px 70px -32px rgba(26,23,20,0.35);
   }
 
   .eyebrow {
@@ -99,7 +152,7 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     background: rgba(27,51,40,0.08);
     padding: 7px 14px;
     border-radius: 100px;
@@ -114,12 +167,13 @@
 
   .hero-title {
     font-family: var(--serif);
-    font-size: clamp(44px, 6.2vw, 80px);
+    font-size: clamp(38px, 5.6vw, 68px);
     font-weight: 400;
     line-height: 1.02;
-    letter-spacing: -1.6px;
-    margin-bottom: 28px;
+    letter-spacing: -1.4px;
+    margin-bottom: 22px;
     color: var(--ink);
+    text-wrap: pretty;
   }
   .hero-title em {
     font-style: italic;
@@ -128,11 +182,11 @@
   }
 
   .hero-tagline {
-    font-size: 18px;
+    font-size: 17px;
     line-height: 1.65;
     color: var(--ink-mid);
-    max-width: 480px;
-    margin-bottom: 38px;
+    max-width: 580px;
+    margin-bottom: 32px;
   }
 
   .hero-actions {
@@ -141,6 +195,19 @@
     gap: 20px;
     align-items: center;
   }
+
+  .hero-trust {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: var(--ink-mid);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .hero-trust svg { color: var(--accent); flex-shrink: 0; margin-top: 1px; }
 
   .btn-primary {
     display: inline-flex;
@@ -181,75 +248,6 @@
   .btn-link:hover {
     border-color: var(--accent);
     color: var(--accent);
-  }
-
-  .hero-trust {
-    margin-top: 36px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    color: var(--ink-mid);
-    font-size: 14px;
-  }
-  .hero-trust svg { color: var(--accent); flex-shrink: 0; }
-
-  /* Hero photo */
-  .hero-photo {
-    position: relative;
-  }
-  .photo-frame {
-    position: relative;
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 20px 60px -20px rgba(26,23,20,0.25);
-  }
-  .photo-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .photo-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, var(--surface-warm) 0%, var(--bg) 100%);
-    color: var(--ink-faint);
-    font-family: var(--sans);
-    font-size: 12px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    gap: 14px;
-  }
-  .photo-placeholder svg { opacity: 0.4; }
-
-  .photo-badge {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    background: var(--surface);
-    padding: 12px 16px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 4px 16px rgba(26,23,20,0.12);
-  }
-  .photo-badge-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #2DA85B;
-    box-shadow: 0 0 0 3px rgba(45,168,91,0.18);
-  }
-  .photo-badge-text {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--ink);
   }
 
   /* ──────────────────────────────────────── SECTIONS BASE */
@@ -830,12 +828,10 @@
 
   /* ──────────────────────────────────────── RESPONSIVE */
   @media (max-width: 960px) {
-    .hero {
-      grid-template-columns: 1fr;
-      gap: 50px;
-      padding-top: 110px;
-    }
-    .hero-photo { max-width: 440px; margin: 0 auto; width: 100%; }
+    .hero { padding: 0 0 60px; }
+    .hero-photo-band { height: 56vh; min-height: 380px; margin-top: 64px; padding: 0 5%; }
+    .hero-card-wrap { padding: 0 5%; margin-top: -90px; }
+    .hero-card { padding: 40px 32px 36px; }
     .services-grid { grid-template-columns: 1fr; }
     .proof-grid { grid-template-columns: 1fr; }
     section { padding: 72px 6%; }
@@ -843,8 +839,10 @@
   @media (max-width: 560px) {
     nav { padding: 14px 5%; }
     .nav-cta { padding: 9px 14px; font-size: 13px; }
-    .hero { padding: 100px 5% 60px; }
-    .hero-actions { flex-direction: column; align-items: stretch; gap: 14px; }
+    .hero-photo-band { height: 52vh; min-height: 340px; padding: 0 4%; }
+    .hero-card-wrap { padding: 0 4%; margin-top: -70px; }
+    .hero-card { padding: 32px 24px 28px; border-radius: 12px; }
+    .hero-actions { flex-direction: column; align-items: stretch; gap: 12px; }
     .btn-primary { width: 100%; justify-content: center; }
     .btn-link { text-align: center; }
     .contact-section, section { padding: 64px 5%; }
@@ -867,41 +865,43 @@
 
 <!-- ══════════════════════════ HERO -->
 <section class="hero" id="hero">
-  <div class="hero-text">
-    <span class="eyebrow reveal">Niezależny doradca ubezpieczeniowy</span>
-
-    <h1 class="hero-title reveal d1">
-      Ubezpieczenia i emerytura, <em>po ludzku.</em>
-    </h1>
-
-    <p class="hero-tagline reveal d2">
-      Pomagam ogarnąć ubezpieczenia i&nbsp;emeryturę bez wciskania produktów, których nie potrzebujesz. Tłumaczę normalnie co ma sens, a&nbsp;co tylko dobrze wygląda w&nbsp;ofercie.
-    </p>
-
-    <div class="hero-actions reveal d3">
-      <a href="#kontakt" class="btn-primary">Umów konsultację</a>
-      <a href="#kontakt" class="btn-link">Pierwsza rozmowa gratis</a>
-    </div>
-
-    <div class="hero-trust reveal d3">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="9"/>
-        <path d="M12 7v5l3 2"/>
-      </svg>
-      <span>Pierwsza rozmowa trwa zwykle 15&ndash;20&nbsp;minut i&nbsp;do&nbsp;niczego nie&nbsp;zobowiązuje.</span>
-    </div>
-  </div>
-
-  <div class="hero-photo reveal d2">
-    <div class="photo-frame">
+  <div class="hero-photo-band reveal">
+    <div class="hero-photo-frame">
       <img src="img/foto.jpg" alt="Patrycja, doradca ubezpieczeniowy"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
       <div class="photo-placeholder" style="display:none;">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
           <circle cx="12" cy="8" r="4"/>
           <path d="M4 22c0-4 4-7 8-7s8 3 8 7"/>
         </svg>
         <span>img / foto.jpg</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-card-wrap">
+    <div class="hero-card">
+      <span class="eyebrow reveal">Niezależny doradca ubezpieczeniowy</span>
+
+      <h1 class="hero-title reveal d1">
+        Ubezpieczenia i emerytura, <em>po ludzku.</em>
+      </h1>
+
+      <p class="hero-tagline reveal d2">
+        Pomagam ogarnąć ubezpieczenia i&nbsp;emeryturę bez wciskania produktów, których nie potrzebujesz. Tłumaczę normalnie co ma sens, a&nbsp;co tylko dobrze wygląda w&nbsp;ofercie.
+      </p>
+
+      <div class="hero-actions reveal d3">
+        <a href="#kontakt" class="btn-primary">Umów konsultację</a>
+        <a href="#kontakt" class="btn-link">Pierwsza rozmowa gratis</a>
+      </div>
+
+      <div class="hero-trust reveal d3">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 7v5l3 2"/>
+        </svg>
+        <span>Pierwsza rozmowa trwa zwykle 15&ndash;20&nbsp;minut i&nbsp;do&nbsp;niczego nie&nbsp;zobowiązuje.</span>
       </div>
     </div>
   </div>
